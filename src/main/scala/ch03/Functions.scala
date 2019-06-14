@@ -19,7 +19,10 @@ class Functions {
       it => if(it > 0) 1.0 else 0.0
     }
 
-
+  def relu(x: DenseVector[Double]): DenseVector[Double] =
+    x.map{
+      it => if(it > 0) it else 0.0
+    }
 }
 
 object Functions {
@@ -27,4 +30,5 @@ object Functions {
 
   def sigmoid(x: DenseVector[Double]) = apply.sigmoid(x)
   def step(x: DenseVector[Double]) = apply.step(x)
+  def relu(x: DenseVector[Double]): DenseVector[Double] = apply.relu(x)
 }
