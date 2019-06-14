@@ -11,7 +11,7 @@ val xs  = {
 }
 
 val x = DenseVector(xs:_*)
-val y = relu(x)
+val y: DenseVector[Double] = relu(x)
 
 
 p += plot(x, y)
