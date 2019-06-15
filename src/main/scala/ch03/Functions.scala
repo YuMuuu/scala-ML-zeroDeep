@@ -18,19 +18,6 @@ object step extends UFunc with MappingUFunc {
   }
 }
 
-object relu extends UFunc with MappingUFunc {
-  implicit object reluImplInt extends Impl[Int, Double] {
-    def apply(x: Int) = if (x > 0) x else 0d
-  }
-  implicit object reluImplDouble extends Impl[Double, Double] {
-    def apply(x: Double) = if (x > 0) x else 0d
-  }
-
-  implicit object reluImplFloat extends Impl[Float, Float] {
-    def apply(x: Float) = if (x > 0) x else 0f
-  }
-}
-
 object function {
   def ^[T](t: T) = t
 }

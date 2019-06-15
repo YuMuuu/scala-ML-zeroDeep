@@ -1,7 +1,6 @@
 import breeze.linalg._
+import breeze.numerics.relu
 import breeze.plot._
-import ch03.Functions.relu
-
 val f = Figure()
 val p = f.subplot(0)
 
