@@ -27,4 +27,5 @@ object function {
     val sum_exp_a = sum(exp_a)
     exp_a / sum_exp_a
   }
+
 }
