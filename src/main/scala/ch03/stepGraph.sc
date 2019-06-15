@@ -1,6 +1,6 @@
 import breeze.linalg._
 import breeze.plot._
-import ch03.Functions.step
+import ch03.step
 
 //consoleにコピペすると動く
 val f = Figure()
