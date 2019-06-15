@@ -1,9 +1,8 @@
 package ch03
 
-import breeze.linalg.DenseVector
-import breeze.numerics.exp
-
 import breeze.generic.{MappingUFunc, UFunc}
+import breeze.linalg.{DenseMatrix, max, sum}
+import breeze.numerics.exp
 
 object step extends UFunc with MappingUFunc {
   implicit object stepImplInt extends Impl[Int, Double] {
@@ -18,6 +17,14 @@ object step extends UFunc with MappingUFunc {
   }
 }
 
+
 object function {
   def ^[T](t: T) = t
+
+  def softMax(a: DenseMatrix[Double]): DenseMatrix[Double] = {
+    val c = max(a)
+    val exp_a = exp(a - c)
+    val sum_exp_a = sum(exp_a)
+    exp_a / sum_exp_a
+  }
 }

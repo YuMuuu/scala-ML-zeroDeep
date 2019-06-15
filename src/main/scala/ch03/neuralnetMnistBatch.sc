@@ -1,9 +1,9 @@
-import breeze.linalg.{DenseMatrix, DenseVector}
-import breeze.plot.{Figure, plot}
+import breeze.linalg.DenseMatrix
+import breeze.plot.Figure
 import ch03.Network
 import ch03.neuralnetMnistBatch.forward
 
-
+//replだと動く
 val f = Figure()
 val p = f.subplot(0)
 
