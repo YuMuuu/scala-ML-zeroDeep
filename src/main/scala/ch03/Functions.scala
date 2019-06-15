@@ -3,32 +3,34 @@ package ch03
 import breeze.linalg.DenseVector
 import breeze.numerics.exp
 
-class Functions {
-  /*unused
-  *
-  * import breeze.numerics.sigmoid
-  */
-  def sigmoid(x: DenseVector[Double]): DenseVector[Double] = {
-    x.map{
-      it => 1.0/(1.0 + exp(-it))
-    }
+import breeze.generic.{MappingUFunc, UFunc}
+
+object step extends UFunc with MappingUFunc {
+  implicit object stepImplInt extends Impl[Int, Double] {
+    def apply(x: Int) = if (x > 0) 1d else 0d
+  }
+  implicit object stepImplDouble extends Impl[Double, Double] {
+    def apply(x: Double) = if (x > 0d) 1d else 0d
   }
 
-  def step(x: DenseVector[Double]): DenseVector[Double] =
-    x.map{
-      it => if(it > 0) 1.0 else 0.0
-    }
-
-  def relu(x: DenseVector[Double]): DenseVector[Double] =
-    x.map{
-      it => if(it > 0) it else 0.0
-    }
+  implicit object stepImplFloat extends Impl[Float, Float] {
+    def apply(x: Float) = if (x > 0f) 1f else 0f
+  }
 }
 
-object Functions {
-  def apply: Functions = new Functions
+object relu extends UFunc with MappingUFunc {
+  implicit object reluImplInt extends Impl[Int, Double] {
+    def apply(x: Int) = if (x > 0) x else 0d
+  }
+  implicit object reluImplDouble extends Impl[Double, Double] {
+    def apply(x: Double) = if (x > 0) x else 0d
+  }
 
-  def sigmoid(x: DenseVector[Double]) = apply.sigmoid(x)
-  def step(x: DenseVector[Double]) = apply.step(x)
-  def relu(x: DenseVector[Double]): DenseVector[Double] = apply.relu(x)
+  implicit object reluImplFloat extends Impl[Float, Float] {
+    def apply(x: Float) = if (x > 0) x else 0f
+  }
+}
+
+object function {
+  def ^[T](t: T) = t
 }

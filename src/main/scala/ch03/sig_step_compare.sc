@@ -1,6 +1,7 @@
 import breeze.linalg._
+import breeze.numerics.sigmoid
 import breeze.plot._
-import ch03.Functions._
+import ch03._
 
 val f = Figure()
 val p = f.subplot(0)
